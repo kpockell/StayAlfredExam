@@ -1,0 +1,20 @@
+<form [formGroup]="newBuilding" (ngSubmit)="onSubmit()">
+  <div class="form-container col-sm-6 col-xs-12">
+    <div class="col-sm-6 col-xs-12">
+      <mat-form-field>
+        <input matInput placeholder="Building Code" formControlName="BuildingId" type="text" maxlength="2" />
+        <mat-error *ngIf="newBuilding.get('BuildingId')?.invalid">Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+      <mat-form-field>
+        <input matInput placeholder="Building Name" formControlName="BuildingName" type="text" maxlength="120"/>
+        <mat-error *ngIf="newBuilding.get('BuildingName')?.invalid">Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-xs-12">&nbsp;</div>
+    <div class="col-xs-12">
+      <button type="submit" mat-button class="submit-btn">SUBMIT</button>
+    </div>
+  </div>
+</form>

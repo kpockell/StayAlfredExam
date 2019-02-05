@@ -1,0 +1,46 @@
+<form [formGroup]="newUnit" (ngSubmit)="onSubmit()">
+  <div class="form-container col-sm-6 col-xs-12">
+    <div class="col-sm-6 col-xs-12">
+      <mat-form-field>
+        <input matInput placeholder="Unit Number" formControlName="UnitNumber" type="text" />
+        <mat-error *ngIf="newUnit.get('UnitNumber')?.invalid">Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+      <mat-form-field>
+        <!--Needs to be autocomplete-->
+        <input matInput
+               type="text"
+               placeholder="Building"
+               formControlName="BuildingId"
+               [matAutocomplete]="auto" />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let building of buildings$ | async" [value]="building.BuildingId">{{building.BuildingName}}</mat-option>
+        </mat-autocomplete>
+        <mat-error *ngIf="newUnit.get('BuildingId')?.required">Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+      <mat-form-field>
+        <input matInput placeholder="Bedrooms" formControlName="Bedrooms" type="number" />
+        <mat-error *ngIf="newUnit.get('Bedrooms')?.invalid">Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+      <mat-form-field>
+        <input matInput placeholder="Bathrooms" formControlName="Bathrooms" type="number" />
+        <mat-error *ngIf="newUnit.get('Bathrooms')?.invalid">Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+      <mat-form-field>
+        <input matInput placeholder="Square feet" formControlName="SquareFootage" type="number" />
+        <mat-error *ngIf="newUnit.get('SquareFootage')?.invalid">Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-xs-12">&nbsp;</div>
+    <div class="col-xs-12">
+      <button type="submit" mat-button class="submit-btn">SUBMIT</button>
+    </div>
+  </div>
+</form>

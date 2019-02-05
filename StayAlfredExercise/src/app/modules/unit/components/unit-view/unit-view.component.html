@@ -1,0 +1,31 @@
+<mat-card>
+  <!--<mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>-->
+  <table mat-table [dataSource]="units" matSort>
+    <ng-container matColumnDef="CompositeId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Unit Number </th>
+      <td mat-cell *matCellDef="let row"> <a [routerLink]="['/reservations', row.UnitId]">{{row.CompositeId}}</a> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="BuildingId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Building </th>
+      <td mat-cell *matCellDef="let row"> {{row.BuildingId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Bedrooms">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Bedrooms </th>
+      <td mat-cell *matCellDef="let row"> {{row.Bedrooms}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Bathrooms">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Bathrooms </th>
+      <td mat-cell *matCellDef="let row"> {{row.Bathrooms}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+</mat-card>

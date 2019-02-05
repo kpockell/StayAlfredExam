@@ -1,0 +1,56 @@
+<form [formGroup]="newReservation" (ngSubmit)="onSubmit()">
+  <div class="form-container col-sm-6 col-xs-12">
+    <div class="col-sm-6 col-xs-12">
+      <mat-form-field>
+        <input matInput
+               placeholder="Unit"
+               formControlName="UnitId"
+               type="text"
+               [matAutocomplete]="auto" />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let unit of units$ | async" [value]="unit.UnitId">{{unit.CompositeId}}</mat-option>
+        </mat-autocomplete>
+        <mat-error *ngIf="newReservation.get('UnitId')?.invalid">Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+      <mat-form-field>
+        <input matInput
+               placeholder="Guest"
+               formControlName="GuestId"
+               type="text"
+               [matAutocomplete]="guestAuto" />
+        <mat-autocomplete #guestAuto="matAutocomplete">
+          <mat-option *ngFor="let guest of guests$ | async" [value]="guest.GuestId">{{guest.FirstName}} {{guest.LastName}}</mat-option>
+        </mat-autocomplete>
+        <mat-error *ngIf="newReservation.get('GuestId')?.invalid">Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+      <mat-form-field>
+        <input matInput
+                [matDatepicker]="inPicker"
+                formControlName="CheckInDate"
+                placeholder="Check In Date">
+        <mat-datepicker-toggle matSuffix [for]="inPicker"></mat-datepicker-toggle>
+        <mat-datepicker #inPicker></mat-datepicker>
+        <mat-error *ngIf="newReservation.get('CheckInDate')?.invalid">Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+      <mat-form-field>
+        <input matInput
+               [matDatepicker]="outPicker"
+               formControlName="CheckOutDate"
+               placeholder="Check Out Date">
+        <mat-datepicker-toggle matSuffix [for]="outPicker"></mat-datepicker-toggle>
+        <mat-datepicker #outPicker></mat-datepicker>
+        <mat-error *ngIf="newReservation.get('CheckOutDate')?.invalid">Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-xs-12">&nbsp;</div>
+    <div class="col-xs-12">
+      <button type="submit" mat-button class="submit-btn">SUBMIT</button>
+    </div>
+  </div>
+</form>

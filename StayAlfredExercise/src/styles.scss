@@ -1,0 +1,22 @@
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import '../node_modules/ngx-toastr/toastr.css';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.submit-btn {
+  background-color: #c4c626;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container > .col-sm-6.col-xs-12 {
+  text-align: center;
+}
+#toast-container > div {
+  opacity: 1;
+}
