@@ -1,8 +1,8 @@
 <mat-card>
-  <!--<mat-form-field>
+  <mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-  </mat-form-field>-->
-  <table mat-table [dataSource]="units" matSort>
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="CompositeId">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Unit Number </th>
       <td mat-cell *matCellDef="let row"> <a [routerLink]="['/reservations', row.UnitId]">{{row.CompositeId}}</a> </td>
